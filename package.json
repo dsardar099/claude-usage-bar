@@ -1,0 +1,80 @@
+{
+  "name": "claude-usage-bar",
+  "displayName": "Claude Usage Bar",
+  "description": "Shows Claude Code / Claude.ai plan usage limits in the VS Code status bar",
+  "version": "0.1.0",
+  "publisher": "DwaipayanSardar",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsardar099/claude-usage-bar"
+  },
+  "activationEvents": ["onStartupFinished"],
+  "main": "./out/extension.js",
+  "icon": "resources/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeUsageBar.refresh",
+        "title": "Claude Usage: Refresh"
+      },
+      {
+        "command": "claudeUsageBar.showDetails",
+        "title": "Claude Usage: Show Details"
+      }
+    ],
+    "configuration": {
+      "title": "Claude Usage Bar",
+      "properties": {
+        "claudeUsageBar.refreshIntervalMinutes": {
+          "type": "number",
+          "default": 5,
+          "minimum": 1,
+          "maximum": 60,
+          "description": "How often to refresh usage data (in minutes)"
+        },
+        "claudeUsageBar.showInStatusBar": {
+          "type": "string",
+          "default": "both",
+          "enum": ["session", "weekly", "both"],
+          "enumDescriptions": [
+            "Show current session (5-hour) usage only",
+            "Show weekly (7-day) usage only",
+            "Show both session and weekly usage"
+          ],
+          "description": "Which usage metric to display in the status bar"
+        },
+        "claudeUsageBar.position": {
+          "type": "string",
+          "default": "right",
+          "enum": ["left", "right"],
+          "description": "Status bar position (left or right)"
+        },
+        "claudeUsageBar.priority": {
+          "type": "number",
+          "default": 100,
+          "description": "Status bar item priority (higher = more to the left)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.0",
+    "@vscode/vsce": "^2.22.0"
+  }
+}
