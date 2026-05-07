@@ -1,6 +1,6 @@
 {
-  "name": "claude-usage-bar",
-  "displayName": "Claude Usage Bar",
+  "name": "claudebar",
+  "displayName": "ClaudeBar",
   "description": "Shows Claude Code / Claude.ai plan usage limits in the VS Code status bar",
   "version": "0.1.0",
   "publisher": "DwaipayanSardar",
